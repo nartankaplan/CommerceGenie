@@ -220,7 +220,7 @@ Böylelikle mağaza sahipleri, ürünün tanıtım ve çekim masraflarından(man
 ```
 ilkProje/
 ├── 📁 backend/                    # Backend uygulaması
-│   ├── 🐍 web_app.py             # Ana Flask uygulaması (926 satır)
+│   ├── 🐍 web_app.py             # Ana Flask uygulaması 
 │   ├── 📁 instance/              # Veritabanı dosyaları
 │   │   └── 🗄️ geminiapi.db      # SQLite veritabanı
 │   ├── 📁 uploads/               # Yüklenen dosyalar
@@ -230,11 +230,11 @@ ilkProje/
 │       └── 🎬 video_[UUID].mp4   # Oluşturulan videolar
 ├── 📁 frontend/                  # Frontend dosyaları
 │   ├── 📁 templates/             # HTML şablonları
-│   │   ├── 🏠 index.html        # Ana sayfa (647 satır)
-│   │   ├── 🔐 login.html        # Giriş sayfası (57 satır)
-│   │   ├── 📝 register.html     # Kayıt sayfası (57 satır)
-│   │   ├── 🟠 trendyol_product.html  # Trendyol sayfası (286 satır)
-│   │   └── 🔵 n11_product.html  # N11 sayfası (319 satır)
+│   │   ├── 🏠 index.html        # Ana sayfa 
+│   │   ├── 🔐 login.html        # Giriş sayfası 
+│   │   ├── 📝 register.html     # Kayıt sayfası 
+│   │   ├── 🟠 trendyol_product.html  # Trendyol sayfası 
+│   │   └── 🔵 n11_product.html  # N11 sayfası 
 │   └── 📁 static/               # Statik dosyalar
 │       ├── 📁 css/              # Stil dosyaları
 │       │   ├── 🎨 style.css     # Ana stil dosyası
@@ -247,7 +247,7 @@ ilkProje/
 │       └── 📁 images/           # Görsel dosyalar
 │           ├── 🟠 n11_logo.png
 │           └── 🟠 trendyol_logo.png
-├── 🐍 video_gen.py              # Video üretim modülü (47 satır)
+├── 🐍 video_gen.py              # Video üretim modülü 
 ├── 📄 PROJE_YAPISI.md           # Proje yapısı dokümantasyonu
 ├── 📄 Öneriler.md               # Geliştirme önerileri
 └── 📄 README.md                 # Bu dosya
