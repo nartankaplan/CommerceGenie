@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommerceGenie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navigation Header -->
+        <header class="top-navigation">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-store"></i>
+                    <span class="brand-text">CommerceGenie</span>
+                </div>
+                
+                <nav class="nav-menu">
+                    <button class="nav-btn profile-nav-btn" onclick="handlePageChange('profile')">
+                        <i class="fas fa-user"></i>
+                        <span>Profil</span>
+                    </button>
+                    <button class="nav-btn products-nav-btn" onclick="handlePageChange('products')">
+                        <i class="fas fa-box-open"></i>
+                        <span>Ürünlerim</span>
+                    </button>
+                    <button class="nav-btn create-nav-btn" onclick="handlePageChange('create')">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Ürün Oluştur</span>
+                    </button>
+                    <button class="nav-btn logout-nav-btn" onclick="handleLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Çıkış</span>
+                    </button>
+                </nav>
+                
+                <!-- Mobile menu toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Profile Page -->
+            <div class="page-container" id="profilePage" style="display: none;">
+                <div class="page-content">
+                    <!-- Profile Header Section -->
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h1 id="profileUsername">Kullanıcı Adı</h1>
+                            <p class="profile-email" id="profileEmail">kullanici@email.com</p>
+                            <div class="profile-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-box"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <span class="stat-number" id="profileTotalProducts">0</span>
+                                        <span class="stat-label">Toplam Ürün</span>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <span class="stat-number" id="profileTotalImages">0</span>
+                                        <span class="stat-label">Üretilen Görsel</span>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <span class="stat-number" id="profileTotalVideos">0</span>
+                                        <span class="stat-label">Üretilen Video</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CommerceGenie Guide Section -->
+                    <div class="guide-section">
+                        <div class="guide-header">
+                            <h2><i class="fas fa-graduation-cap"></i> CommerceGenie Nasıl Kullanılır?</h2>
+                            <p>AI destekli e-ticaret platformunuzu en verimli şekilde kullanmak için adım adım rehber</p>
+                        </div>
+                        
+                        <div class="guide-steps">
+                            <div class="guide-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h3><i class="fas fa-upload"></i> Ürün Görseli Yükleyin</h3>
+                                    <p>Ürününüzün fotoğrafını yükleyin. CommerceGenie, görselinizi analiz ederek otomatik olarak ürün açıklaması oluşturacak ve düzenleme önerileri sunacaktır.</p>
+                                    <div class="step-tips">
+                                        <span class="tip"><i class="fas fa-lightbulb"></i> İpucu: Yüksek kaliteli, iyi aydınlatılmış fotoğraflar daha iyi sonuçlar verir.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h3><i class="fas fa-magic"></i> AI ile Görsel Düzenleme</h3>
+                                    <p>Gemini AI teknolojisi ile ürününüzü farklı ortamlarda, stillerde ve açılarda yeniden oluşturun. Multi-angle seçeneği ile 3 farklı açıdan görsel üretebilirsiniz.</p>
+                                    <div class="step-tips">
+                                        <span class="tip"><i class="fas fa-lightbulb"></i> İpucu: Detaylı prompt'lar daha iyi sonuçlar verir. "Modern ofis ortamında, profesyonel görünüm" gibi.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h3><i class="fas fa-video"></i> Video İçerik Oluşturma</h3>
+                                    <p>Ürününüz için dinamik video içerikler oluşturun. Bu özellik, e-ticaret platformlarında ürününüzün daha etkileyici görünmesini sağlar.</p>
+                                    <div class="step-tips">
+                                        <span class="tip"><i class="fas fa-lightbulb"></i> İpucu: Video oluştururken hareket ve açı değişiklikleri belirtin.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h3><i class="fas fa-edit"></i> Ürün Bilgilerini Düzenleyin</h3>
+                                    <p>AI tarafından oluşturulan ürün açıklamasını düzenleyin, ürün adını ve fiyatını belirleyin. Tüm bilgileri kontrol edip gerekirse değiştirin.</p>
+                                    <div class="step-tips">
+                                        <span class="tip"><i class="fas fa-lightbulb"></i> İpucu: SEO için anahtar kelimeleri ürün açıklamasına dahil edin.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <h3><i class="fas fa-save"></i> Ürünü Kaydedin</h3>
+                                    <p>Oluşturduğunuz ürünü CommerceGenie kütüphanenize kaydedin. Bu sayede tüm ürünlerinizi tek yerden yönetebilir ve düzenleyebilirsiniz.</p>
+                                    <div class="step-tips">
+                                        <span class="tip"><i class="fas fa-lightbulb"></i> İpucu: Ürünlerinizi kategorilere ayırarak daha kolay yönetebilirsiniz.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="guide-step">
+                                <div class="step-number">6</div>
+                                <div class="step-content">
+                                    <h3><i class="fas fa-share-alt"></i> E-ticaret Platformlarına Aktarın</h3>
+                                    <p>Hazırladığınız ürünleri doğrudan Trendyol, n11 gibi e-ticaret platformlarına aktarın. CommerceGenie, platform özelinde optimize edilmiş içerikler oluşturur.</p>
+                                    <div class="step-tips">
+                                        <span class="tip"><i class="fas fa-lightbulb"></i> İpucu: Her platform için ayrı optimizasyon yaparak daha iyi satış performansı elde edin.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="guide-actions">
+                            <button class="guide-action-btn primary" onclick="handlePageChange('create')">
+                                <i class="fas fa-rocket"></i> İlk Ürünümü Oluştur
+                            </button>
+                            <button class="guide-action-btn secondary" onclick="showAdvancedTips()">
+                                <i class="fas fa-star"></i> Gelişmiş İpuçları
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modern Products Page -->
+            <div class="products-page" id="productsPage" style="display: none;">
+                <div class="products-page-header">
+                    <div class="products-page-title">
+                        <h2><i class="fas fa-box-open"></i> Mevcut Ürünlerim</h2>
+                        <div class="header-actions">
+                            <button class="create-product-btn" onclick="handlePageChange('create')">
+                                <i class="fas fa-plus"></i> Yeni Ürün
+                            </button>
+                        </div>
+                    </div>
+                    <div class="products-page-controls">
+                        <div class="search-and-filter">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="productSearch" placeholder="Ürünlerde ara...">
+                            </div>
+                            <div class="filter-controls">
+                                <select id="categoryFilter" class="filter-select">
+                                    <option value="">Tüm Kategoriler</option>
+                                    <option value="tshirt">T-shirt</option>
+                                    <option value="ayakkabi">Ayakkabı</option>
+                                    <option value="sapka">Şapka</option>
+                                    <option value="kapsonlu">Kapüşonlu</option>
+                                </select>
+                                <select id="sortBy" class="filter-select">
+                                    <option value="newest">En Yeni</option>
+                                    <option value="oldest">En Eski</option>
+                                    <option value="name">İsim (A-Z)</option>
+                                    <option value="name-desc">İsim (Z-A)</option>
+                                </select>
+                                <div class="view-toggle">
+                                    <button class="view-btn active" data-view="grid" title="Grid Görünüm">
+                                        <i class="fas fa-th"></i>
+                                    </button>
+                                    <button class="view-btn" data-view="list" title="Liste Görünüm">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="products-page-stats">
+                            <span class="stat-item">
+                                <i class="fas fa-box"></i>
+                                <span id="totalProducts">0</span> Ürün
+                            </span>
+                            <span class="stat-item">
+                                <i class="fas fa-filter"></i>
+                                <span id="filteredCount">0</span> Gösteriliyor
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+                
+                <!-- Enhanced Empty State -->
+                <div class="enhanced-empty-state" id="emptyProducts" style="display: none;">
+                    <div class="empty-illustration">
+                        <div class="empty-box">
+                            <i class="fas fa-box-open"></i>
+                            <div class="empty-sparkles">
+                                <div class="sparkle sparkle-1">✨</div>
+                                <div class="sparkle sparkle-2">⭐</div>
+                                <div class="sparkle sparkle-3">✨</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="empty-content">
+                        <h3>Henüz hiç ürününüz yok</h3>
+                        <p>AI destekli Gemini teknolojisi ile ilk ürününüzü oluşturun ve e-ticaret dünyasına adım atın!</p>
+                        <div class="empty-features">
+                            <div class="feature-item">
+                                <i class="fas fa-magic"></i>
+                                <span>AI ile görsel düzenleme</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Otomatik açıklama</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-store"></i>
+                                <span>E-ticaret entegrasyonu</span>
+                            </div>
+                        </div>
+                        <div class="empty-actions">
+                            <button class="primary-action-btn" onclick="handlePageChange('create')">
+                                <i class="fas fa-plus-circle"></i> İlk Ürünümü Oluştur
+                            </button>
+                            <button class="secondary-action-btn" onclick="showProductGuide()">
+                                <i class="fas fa-question-circle"></i> Nasıl Başlarım?
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Detail Page -->
+            <div class="page-container" id="productDetailPage" style="display: none;">
+                <!-- Back button positioned at top-left of page -->
+                <div class="product-detail-back">
+                    <button class="back-btn" onclick="goBackToProducts()">
+                        <i class="fas fa-arrow-left"></i>
+                        Geri Dön
+                    </button>
+                </div>
+                
+                <div class="page-content">
+                    <div class="product-detail-content">
+                        <!-- Left side - Image section -->
+                        <div class="detail-image-section">
+                            <div class="detail-image-container">
+                                <img id="detailProductImage" src="" alt="Ürün Görseli">
+                                
+                                <!-- Navigation arrows -->
+                                <button class="image-nav-btn image-nav-prev" onclick="navigateImage(-1)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="image-nav-btn image-nav-next" onclick="navigateImage(1)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                                
+                                <!-- Image upload overlay -->
+                                <div class="image-upload-overlay" id="imageUploadOverlay" style="display: none;">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Yeni Görsel Yükle</span>
+                                    <input type="file" id="detailImageInput" accept="image/*" hidden>
+                                </div>
+                            </div>
+                            
+                            <!-- Image counter -->
+                            <div class="image-counter">
+                                <span id="currentImageIndex">1</span> / <span id="totalImages">1</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Right side - Info section -->
+                        <div class="detail-info-section">
+                            <div class="detail-header">
+                                <h1 id="detailProductName">Ürün Detayı</h1>
+                                <div class="detail-actions">
+                                    <button class="edit-mode-btn" id="editModeBtn" onclick="toggleEditMode()">
+                                        <i class="fas fa-edit"></i>
+                                        Düzenle
+                                    </button>
+                                    <button class="save-btn" id="saveBtn" onclick="saveProductChanges()" style="display: none;">
+                                        <i class="fas fa-save"></i>
+                                        Kaydet
+                                    </button>
+                                    <button class="cancel-btn" id="cancelBtn" onclick="cancelEdit()" style="display: none;">
+                                        <i class="fas fa-times"></i>
+                                        İptal
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-field">
+                                <label for="detailProductNameInput">Ürün Adı</label>
+                                <input type="text" id="detailProductNameInput" class="detail-input" readonly>
+                            </div>
+                            
+                            <div class="detail-field">
+                                <label for="detailProductDescInput">Ürün Açıklaması</label>
+                                <textarea id="detailProductDescInput" class="detail-textarea" rows="6" readonly></textarea>
+                                <div class="detail-char-count" id="detailCharCount">0/500 karakter</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create Page (Main functionality) -->
+            <div class="page-container" id="createPage">
+                <!-- Left Panel - Compact Form -->
+                <div class="control-panel">
+                    <form id="imageForm" enctype="multipart/form-data">
+                        <!-- Compact Upload Area -->
+                        <div class="compact-upload-section">
+                            <div class="compact-drag-drop" id="dragDropArea">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Resim Yükle</span>
+                                    <input type="file" id="imageInput" name="image" accept="image/*" hidden>
+                                    <button type="button" class="compact-browse-btn" id="browseBtn">
+                                        <i class="fas fa-folder-open"></i>
+                                        Dosya Seç
+                                    </button>
+                                </div>
+                                <div class="compact-preview" id="previewContainer" style="display: none;">
+                                    <img id="imagePreview" src="" alt="Yüklenen resim">
+                                    <button type="button" class="compact-remove-btn" id="removeImage">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Compact Prompt Section -->
+                        <div class="compact-prompt-section">
+                            <div class="prompt-header">
+                                <button type="button" class="generate-description-btn" id="generateDescriptionBtn">
+                                    <i class="fas fa-magic"></i>
+                                    <span class="description-btn-text">Açıklama Oluştur</span>
+                                    <div class="description-loading-spinner" style="display: none;">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </div>
+                                </button>
+                            </div>
+                            <textarea 
+                                id="promptInput" 
+                                name="prompt" 
+                                placeholder="Yüklediğiniz resimde yapmak istediğiniz değişiklikleri yazınız (örn: spor salonuna taşı, dinamik hareket ekle, farklı ışıklandırma yap)"
+                                rows="5"
+                                maxlength="500"></textarea>
+                            <div class="compact-char-count">
+                                <span id="charCount">0</span>/500
+                            </div>
+                        </div>
+
+                        <!-- Multi-Angle Generation Toggle -->
+                        <div class="multi-angle-section">
+                            <div class="toggle-container">
+                                <label class="toggle-label">
+                                    <i class="fas fa-camera-rotate"></i>
+                                    <span>Farklı Açılardan Görsel Üret</span>
+                                </label>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="multiAngleToggle" class="toggle-input">
+                                    <label for="multiAngleToggle" class="toggle-slider">
+                                        <span class="toggle-on">ON</span>
+                                        <span class="toggle-off">OFF</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="toggle-description">
+                                <small>Açıkken model ürününüzün 3 farklı açıdan fotoğrafını üretecektir</small>
+                            </div>
+                        </div>
+
+                        <!-- Compact Generate Button -->
+                        <button type="submit" class="compact-generate-btn" id="generateBtn">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <span class="btn-text">Oluştur</span>
+                            <div class="loading-spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+
+                        <!-- Video Generate Button -->
+                        <button type="button" class="compact-video-btn" id="generateVideoBtn">
+                            <i class="fas fa-video"></i>
+                            <span class="video-btn-text">Video Oluştur</span>
+                            <div class="video-loading-spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                            </div>
+                        </button>
+                    </form>
+
+                    <!-- Error Message -->
+                    <div class="compact-error-message" id="errorMessage" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span id="errorText"></span>
+                    </div>
+                </div>
+
+                <!-- Right Panel - Results Gallery -->
+                <div class="results-panel">
+                    <div class="gallery-header">
+                        <div class="gallery-header-content">
+                            <h2><i class="fas fa-images"></i> Sonuçlar</h2>
+                            <div class="gallery-actions">
+                                <button type="button" class="add-image-btn" id="addImageBtn" title="Resim Ekle">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="results-gallery" id="resultsGallery">
+                        <div class="no-results" id="noResults">
+                            <i class="fas fa-image"></i>
+                            <p>Henüz resim oluşturulmadı</p>
+                            <p class="drag-drop-hint">Resim eklemek için yukarıdaki + butonuna tıklayın veya resimleri buraya sürükleyin</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Save Section -->
+                    <div class="product-save-section" id="productSaveSection" style="display: none;">
+                        <div class="save-header">
+                            <h3><i class="fas fa-save"></i> Ürünü Kaydet</h3>
+                        </div>
+                        <div class="save-form">
+                            <div class="save-field">
+                                <label for="saveProductName">Ürün Adı</label>
+                                <input type="text" id="saveProductName" placeholder="Ürün adını girin">
+                            </div>
+                            <div class="save-field">
+                                <label for="saveProductDescription">Ürün Açıklaması</label>
+                                <div class="description-header">
+                                    <button type="button" class="generate-product-description-btn" id="generateProductDescriptionBtn">
+                                        <i class="fas fa-magic"></i>
+                                        <span class="product-description-btn-text">AI ile Açıklama Oluştur</span>
+                                        <div class="product-description-loading-spinner" style="display: none;">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                                <textarea id="saveProductDescription" placeholder="Ürün özelliklerini detaylı olarak yazın (örn: -Bağlama şekli: Bağcıklı, -Materyal: Tekstil, -Taban tipi: Düz taban, -Renk: Beyaz)" rows="4"></textarea>
+                                <div class="description-examples">
+                                    <small><strong>Örnekler:</strong></small>
+                                    <div class="example-item">
+                                        <small><strong>Ayakkabı:</strong> -Bağlama şekli: Bağcıklı, -Materyal: Tekstil, -Taban tipi: Düz taban, -Renk: Beyaz</small>
+                                    </div>
+                                    <div class="example-item">
+                                        <small><strong>T-shirt:</strong> -Kalıp: Regular, -Yaka tipi: Bisiklet yaka, -Materyal: Pamuklu, -Kumaş tipi: Dokuma, -Kol tipi: Kısa kol, -Desen: Nakışlı</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="save-product-btn" id="saveProductBtn">
+                                <i class="fas fa-save"></i> Ürünü Kaydet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Modal -->
+        <div class="image-modal" id="imageModal" style="display: none;">
+            <div class="modal-backdrop" id="modalBackdrop"></div>
+            <div class="modal-content">
+                <button type="button" class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+                <img id="modalImage" src="" alt="Büyütülmüş resim">
+                <div class="modal-actions">
+                    <button type="button" class="modal-action-btn" id="modalDownload">
+                        <i class="fas fa-download"></i> İndir
+                    </button>
+                    <button type="button" class="modal-action-btn" id="modalShare">
+                        <i class="fas fa-share"></i> Paylaş
+                    </button>
+                </div>
+                <div class="modal-text" id="modalText"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="product-detail-modal" id="productDetailModal" style="display: none;">
+        <div class="modal-backdrop" onclick="closeProductDetailModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close-btn" onclick="closeProductDetailModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-product-detail">
+                    <!-- Left side - Image section -->
+                    <div class="modal-image-section">
+                        <div class="modal-image-container">
+                            <img id="modalProductImage" src="" alt="Ürün Görseli" style="display: block;">
+                            <video id="modalProductVideo" src="" controls style="display: none; width: 100%; height: 100%; object-fit: contain;">
+                                Tarayıcınız video oynatmayı desteklemiyor.
+                            </video>
+                            
+                            <!-- Navigation arrows -->
+                            <button class="modal-image-nav-btn modal-image-nav-prev" onclick="modalNavigateImage(-1)">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="modal-image-nav-btn modal-image-nav-next" onclick="modalNavigateImage(1)">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            
+                            <!-- Image upload overlay -->
+                            <div class="modal-image-upload-overlay" id="modalImageUploadOverlay" style="display: none;">
+                                <i class="fas fa-camera"></i>
+                                <span>Yeni Görsel Yükle</span>
+                                <input type="file" id="modalDetailImageInput" accept="image/*" hidden>
+                            </div>
+                        </div>
+                        
+                        <!-- Image counter -->
+                        <div class="modal-image-counter">
+                            <span id="modalCurrentImageIndex">1</span> / <span id="modalTotalImages">1</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Right side - Info section -->
+                    <div class="modal-info-section">
+                        <div class="modal-detail-header">
+                            <h1 id="modalProductName">Ürün Detayı</h1>
+                            <div class="modal-detail-actions">
+                                <button class="modal-edit-mode-btn" id="modalEditModeBtn" onclick="modalToggleEditMode()">
+                                    <i class="fas fa-edit"></i>
+                                    Düzenle
+                                </button>
+                                <button class="modal-delete-btn" onclick="deleteProductFromModal()">
+                                    <i class="fas fa-trash"></i>
+                                    Ürünü Sil
+                                </button>
+                                <button class="modal-save-btn" id="modalSaveBtn" onclick="modalSaveProductChanges()" style="display: none;">
+                                    <i class="fas fa-save"></i>
+                                    Kaydet
+                                </button>
+                                <button class="modal-cancel-btn" id="modalCancelBtn" onclick="modalCancelEdit()" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                    İptal
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-detail-field">
+                            <label for="modalProductNameInput">Ürün Adı</label>
+                            <input type="text" id="modalProductNameInput" class="modal-detail-input" readonly>
+                        </div>
+                        
+                        <div class="modal-detail-field">
+                            <label for="modalProductDescInput">Ürün Açıklaması</label>
+                            <textarea id="modalProductDescInput" class="modal-detail-textarea" rows="6" readonly></textarea>
+                            <div class="modal-detail-char-count" id="modalDetailCharCount">0/500 karakter</div>
+                        </div>
+                        
+                        <div class="modal-detail-field">
+                            <label>Ürün Fiyatı</label>
+                            <div class="modal-product-price-container">
+                                <input type="number" id="modalProductPriceInput" class="modal-product-price-input" readonly step="0.01" min="0">
+                                <span class="modal-product-price-currency">TL</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Action Buttons -->
+                        <div class="modal-product-actions">
+                            <div class="marketplace-buttons-row">
+                                <button class="modal-action-btn modal-add-trendyol-btn" onclick="addToTrendyol()">
+                                    <img src="/static/images/trendyol_logo.png" alt="Trendyol" class="marketplace-logo">
+                                    <i class="fas fa-plus"></i>
+                                    Trendyol'a Ekle
+                                </button>
+                                <button class="modal-action-btn modal-view-trendyol-btn" onclick="viewOnTrendyol()">
+                                    <img src="/static/images/trendyol_logo.png" alt="Trendyol" class="marketplace-logo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Trendyol'da Görüntüle
+                                </button>
+                            </div>
+                            <div class="marketplace-buttons-row">
+                                <button class="modal-action-btn modal-add-n11-btn" onclick="addToN11()">
+                                    <img src="/static/images/n11_logo.png" alt="n11" class="marketplace-logo">
+                                    <i class="fas fa-plus"></i>
+                                    n11'e Ekle
+                                </button>
+                                <button class="modal-action-btn modal-view-n11-btn" onclick="viewOnN11()">
+                                    <img src="/static/images/n11_logo.png" alt="n11" class="marketplace-logo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    n11'de Görüntüle
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

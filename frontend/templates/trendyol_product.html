@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendyol - Ürün Sayfası</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/trendyol.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Trendyol Header -->
+    <header class="trendyol-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo">
+                    <img src="https://cdn.dsmcdn.com/web/logo/ty-web.svg" alt="Trendyol">
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Aradığınız ürün, kategori veya markayı yazınız">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-menu">
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-user"></i>
+                        <span>Hesabım</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-heart"></i>
+                        <span>Favorilerim</span>
+                    </a>
+                    <a href="#" class="menu-item">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Sepetim</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <a href="#">Anasayfa</a>
+            <i class="fas fa-chevron-right"></i>
+            <a href="#" id="categoryBreadcrumb">Kategori</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="productNameBreadcrumb">Ürün Adı</span>
+        </div>
+    </nav>
+
+    <!-- Product Container -->
+    <div class="product-container">
+        <div class="container">
+            <!-- Product Images -->
+            <div class="product-images">
+                <div class="main-image-container">
+                    <img id="mainProductImage" src="" alt="Ürün Görseli" style="display: block; width: 100%; height: 100%; object-fit: contain;">
+                    <video id="mainProductVideo" src="" controls style="display: none; width: 100%; height: 100%; object-fit: contain;">
+                        Tarayıcınız video oynatmayı desteklemiyor.
+                    </video>
+                    <div class="image-actions">
+                        <button class="image-action-btn">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button class="image-action-btn">
+                            <i class="fas fa-share"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="thumbnail-images" id="thumbnailContainer">
+                    <!-- Thumbnails will be dynamically generated here -->
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-title">
+                        <h1 id="productTitle">Ürün Adı</h1>
+                    </div>
+                    <div class="product-badge">
+                        <span class="badge">Yeni</span>
+                        <span class="badge">Hızlı Teslimat</span>
+                    </div>
+                </div>
+
+                <!-- Product Price -->
+                <div class="product-price">
+                    <div class="current-price">
+                        <span class="price-amount" id="productPrice">₺299.99</span>
+                        <span class="price-info">
+                            <span class="price-note">Ücretsiz Kargo</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Product Options -->
+                <div class="product-options">
+                    <div class="option-group">
+                        <div class="option-label">Beden</div>
+                        <div class="size-options">
+                            <button class="size-option" data-size="XS">XS</button>
+                            <button class="size-option" data-size="S">S</button>
+                            <button class="size-option active" data-size="M">M</button>
+                            <button class="size-option" data-size="L">L</button>
+                            <button class="size-option" data-size="XL">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <div class="option-label">Renk</div>
+                        <div class="color-options">
+                            <button class="color-option active" data-color="siyah" style="background-color: #000000;"></button>
+                            <button class="color-option" data-color="beyaz" style="background-color: #ffffff;"></button>
+                            <button class="color-option" data-color="mavi" style="background-color: #0066cc;"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Actions -->
+                <div class="product-actions">
+                    <div class="quantity-selector">
+                        <div class="quantity-label">Adet</div>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn-primary" onclick="addToCart()">
+                            <i class="fas fa-shopping-bag"></i>
+                            Sepete Ekle
+                        </button>
+                        <button class="btn-secondary" onclick="buyNow()">
+                            <i class="fas fa-bolt"></i>
+                            Hemen Al
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Features -->
+                <div class="product-features">
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Ücretsiz Kargo</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-undo"></i>
+                        <span>14 Gün İade</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Güvenli Alışveriş</span>
+                    </div>
+                </div>
+
+                <!-- Product Description -->
+                <div class="product-description">
+                    <h3>Ürün Açıklaması</h3>
+                    <div id="productDescription">
+                        <p>Ürün açıklaması burada yer alacak...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <div class="container">
+            <div class="details-tabs">
+                <button class="tab-btn active" data-tab="description">Açıklama</button>
+                <button class="tab-btn" data-tab="specifications">Özellikler</button>
+                <button class="tab-btn" data-tab="reviews">Yorumlar</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="description" class="tab-pane active">
+                    <h4>Ürün Detayları</h4>
+                    <div id="detailedDescription">
+                        <p>Detaylı ürün açıklaması burada yer alacak...</p>
+                    </div>
+                </div>
+
+                <div id="specifications" class="tab-pane">
+                    <h4>Teknik Özellikler</h4>
+                    <div class="specs-grid" id="productSpecs">
+                        <div class="spec-item">
+                            <strong>Materyal:</strong> <span id="specMaterial">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Renk:</strong> <span id="specColor">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Stil:</strong> <span id="specStyle">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Hedef Kitle:</strong> <span id="specAudience">-</span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Açılar:</strong> <span id="specAngles">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="reviews" class="tab-pane">
+                    <h4>Müşteri Yorumları</h4>
+                    <div class="reviews-container">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <div class="reviewer-name">Ahmet Y.</div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="review-text">
+                                "Harika bir ürün, çok beğendim. Kalitesi gerçekten çok iyi."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Similar Products -->
+    <div class="similar-products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benzer Ürünler</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200x250" alt="Benzer Ürün">
+                    <div class="product-card-info">
+                        <h3>Benzer Ürün 1</h3>
+                        <div class="product-card-price">₺199.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200x250" alt="Benzer Ürün">
+                    <div class="product-card-info">
+                        <h3>Benzer Ürün 2</h3>
+                        <div class="product-card-price">₺249.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200x250" alt="Benzer Ürün">
+                    <div class="product-card-info">
+                        <h3>Benzer Ürün 3</h3>
+                        <div class="product-card-price">₺179.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Button -->
+    <div class="add-product-section">
+        <div class="container">
+            <button class="add-product-btn" onclick="addProductToTrendyol()">
+                <i class="fas fa-plus"></i>
+                Bu Ürünü Trendyol'a Ekle
+            </button>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="{{ url_for('static', filename='js/trendyol.js') }}"></script>
+</body>
+</html> 
