@@ -22,50 +22,37 @@ Demo video: https://youtu.be/HbwP0CutjGI?si=Im2ju37xCHxmPx37
 
 Geliştiriciler: Nartan Kaplan , Muhammet Furkan Çam
 
+CommerceGenie by ByteBrothers (Nartan Kaplan, Muhammet Furkan Çam)
 🧠 CommerceGenie Nedir?
 CommerceGenie, e-ticaret mağazaları için içerik üretim süreçlerini baştan aşağı yeniden tanımlayan yapay zekâ destekli bir otomasyon platformudur.
-
 Bugünün e-ticaret dünyasında bir ürünün sadece kaliteli olması yetmez – o ürünün nasıl sunulduğu, anlatıldığı ve görselleştirildiği de satış başarısında belirleyici bir rol oynar.
-
 Ancak bu sunumu oluşturmak;
 📸 profesyonel ürün fotoğrafları çekmek,
 🎬 tanıtım videoları üretmek,
 📝 özgün ve SEO uyumlu açıklamalar yazmak
 gibi yüksek maliyetli ve zaman alıcı adımlar içerir.
-
 Üstelik her platform (Trendyol, N11, Shopify…) farklı formatlar, görsel boyutları ve açıklama kriterleri ister.
-
+________________________________________
 🚩 İşte Bu Noktada CommerceGenie Devreye Giriyor
 CommerceGenie, tüm bu içerik üretim sürecini tek bir platformda ve dakikalar içinde otomatik olarak gerçekleştiren bir çözüm sunar.
-
 👤 Mağaza sahibi sadece ürün fotoğrafını yükler ve ne istediğini yazar:
-
 “Beyaz arka plan, kadın mankenle göster, açıklama hazırla.”
-
-📦 CommerceGenie ise:
-
-Yapay zekâ ile ürünü analiz eder
-
-Fotoğrafı yeniden düzenler
-
-Tanıtım videosu oluşturur
-
-Ürün açıklamasını otomatik yazar
-
-Trendyol veya N11 sayfasını hazırlar
-
+Dilerse bu süreci’de tamamen otomatikleştirip yüklenen ürün görselinden oluşturulacak olan yeni resimlere, videolara ve ürünün detaylı açıklamalarına klavyede tek bir tuşa bile basmadan ürününü oluşturup, dilediği platformlara taşıyabilir.
+📦 CommerceGenie bu noktada;
+•	Yapay zekâ ile ürünü analiz eder
+•	Fotoğrafı yeniden düzenler
+•	Tanıtım videosu oluşturur
+•	Ürün açıklamasını otomatik yazar
+•	Trendyol veya N11 sayfasını hazırlar
 Ve bunu insan müdahalesine gerek kalmadan, geleneksel yöntemlere kıyasla %90 daha az maliyetle yapar.
-
+________________________________________
 🎯 Özetle
 CommerceGenie, günümüzde her satıcının yaşadığı üç temel sorunu hedef alır:
-
-İçerik üretimi için zaman ve bütçe yetersizliği
-
-Pazarlama materyallerinin profesyonel seviyede olmaması
-
-Her platforma özel içerik üretim zorunluluğu
-
+1.	İçerik üretimi için zaman ve bütçe yetersizliği
+2.	Pazarlama materyallerinin profesyonel seviyede olmaması
+3.	Her platforma özel içerik üretim zorunluluğu
 Ve bu sorunlara, AI destekli hızlı, ekonomik ve kullanıcı dostu bir çözüm sunar.
+
 
 
 
