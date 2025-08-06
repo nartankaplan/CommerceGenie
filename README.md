@@ -1,4 +1,4 @@
-# 🎨 Gemini AI - Akıllı Resim Düzenleme ve Ürün Yönetim Sistemi
+
 
 <div align="center">
 
