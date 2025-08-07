@@ -247,9 +247,6 @@ ilkProje/
 │       └── 📁 images/           # Görsel dosyalar
 │           ├── 🟠 n11_logo.png
 │           └── 🟠 trendyol_logo.png
-├── 🐍 video_gen.py              # Video üretim modülü 
-├── 📄 PROJE_YAPISI.md           # Proje yapısı dokümantasyonu
-├── 📄 Öneriler.md               # Geliştirme önerileri
 └── 📄 README.md                 # Bu dosya
 ```
 
