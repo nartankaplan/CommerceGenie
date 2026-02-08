@@ -174,35 +174,35 @@ In this way, store owners save both time and costs related to product promotion 
 ### 📁 Project Structure
 ```
 Project/
-├── 📁 backend/                    # Backend uygulaması
-│   ├── 🐍 web_app.py             # Ana Flask uygulaması 
-│   ├── 📁 instance/              # Veritabanı dosyaları
-│   │   └── 🗄️ geminiapi.db      # SQLite veritabanı
-│   ├── 📁 uploads/               # Yüklenen dosyalar
-│   │   └── 📄 [UUID]_[filename]  # Güvenli dosya adlandırma
-│   └── 📁 generated_images/      # AI tarafından oluşturulan dosyalar
-│       ├── 🖼️ generated_[UUID].png
-│       └── 🎬 video_[UUID].mp4   # Oluşturulan videolar
-├── 📁 frontend/                  # Frontend dosyaları
-│   ├── 📁 templates/             # HTML şablonları
-│   │   ├── 🏠 index.html        # Ana sayfa 
-│   │   ├── 🔐 login.html        # Giriş sayfası 
-│   │   ├── 📝 register.html     # Kayıt sayfası 
-│   │   ├── 🟠 trendyol_product.html  # Trendyol sayfası 
-│   │   └── 🔵 n11_product.html  # N11 sayfası 
-│   └── 📁 static/               # Statik dosyalar
-│       ├── 📁 css/              # Stil dosyaları
-│       │   ├── 🎨 style.css     # Ana stil dosyası
-│       │   ├── 🟠 trendyol.css  # Trendyol özel stilleri
-│       │   └── 🔵 n11.css       # N11 özel stilleri
-│       ├── 📁 js/               # JavaScript dosyaları
-│       │   ├── ⚡ script.js     # Ana JavaScript
-│       │   ├── 🟠 trendyol.js   # Trendyol özel fonksiyonlar
-│       │   └── 🔵 n11.js        # N11 özel fonksiyonlar
-│       └── 📁 images/           # Görsel dosyalar
-│           ├── 🟠 n11_logo.png
-│           └── 🟠 trendyol_logo.png
-└── 📄 README.md                 # Bu dosya
+├── 📁 backend/ # Backend application
+│ ├── 🐍 web_app.py # Main Flask application
+│ ├── 📁 instance/ # Database files
+│ │ └── 🗄️ geminiapi.db # SQLite database
+│ ├── 📁 uploads/ # Uploaded files
+│ │ └── 📄 [UUID][filename] # Secure file naming
+│ └── 📁 generated_images/ # AI-generated files
+│ ├── 🖼️ generated[UUID].png
+│ └── 🎬 video_[UUID].mp4 # Generated videos
+├── 📁 frontend/ # Frontend files
+│ ├── 📁 templates/ # HTML templates
+│ │ ├── 🏠 index.html # Home page
+│ │ ├── 🔐 login.html # Login page
+│ │ ├── 📝 register.html # Register page
+│ │ ├── 🟠 trendyol_product.html # Trendyol page
+│ │ └── 🔵 n11_product.html # N11 page
+│ └── 📁 static/ # Static files
+│ ├── 📁 css/ # Style files
+│ │ ├── 🎨 style.css # Main style file
+│ │ ├── 🟠 trendyol.css # Trendyol-specific styles
+│ │ └── 🔵 n11.css # N11-specific styles
+│ ├── 📁 js/ # JavaScript files
+│ │ ├── ⚡ script.js # Main JavaScript
+│ │ ├── 🟠 trendyol.js # Trendyol-specific functions
+│ │ └── 🔵 n11.js # N11-specific functions
+│ └── 📁 images/ # Image files
+│ ├── 🟠 n11_logo.png
+│ └── 🟠 trendyol_logo.png
+└── 📄 README.md # This file
 ```
 </div>
 
